@@ -1,0 +1,11 @@
+# This image will be based on the official nodejs docker image
+FROM mongo:latest
+CMD rm -r /data/db/*
+COPY data/cities_canada-usa.tsv /data/ 
+#CMD ["mongod", "--smallfiles", "&" ]
+
+CMD mongoimport --type tsv --host db --file /data/cities_canada-usa.tsv  --drop --headerline --upsert --db codechallenge --collection cities
+ 
+# The command to run our app when the container is run
+#CMD ["npm", "start"]
+#CMD ["mongod", "--shutdown" ]

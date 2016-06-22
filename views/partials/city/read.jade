@@ -1,0 +1,55 @@
+div#readCity(ng-controller="ReadCityCtrl")
+h2.sub-header {{city.name}} - {{city.country}}
+.row
+    .col-sm-12.col.col-md-7.main
+        table.table.table-striped
+            tr(ng-show='city.ascii')
+                th
+                    span ASCII name
+                td {{city.ascii}}
+            tr(ng-show='city.alt_name')
+                th
+                    span Alternative names
+                td
+                    //TODO Modifier le stockage des noms dans la base de donnée
+                    {{city.alt_name.split(',').join(', ')}}
+            tr
+                th GPS location
+                td 
+                    span long: {{city.long}}
+                    br
+                    span lat : {{city.lat}}
+            tr(ng-show='city.population')
+                th Population
+                td {{city.population}}
+            tr(ng-show='city.elevation')
+                th Elevation
+                td {{city.elevation}}
+            tr(ng-show='city.dem')
+                th Digital Elevation Model
+                td {{city.dem}}
+            tr(ng-show='city.tz')
+                th Timezone
+                td {{city.tz}}
+            tr
+                th Others informations
+                td 
+                    span(ng-show='city.feat_class') Feat classs : {{city.feat_class}}
+                    br
+                    span(ng-show='city.feat_code') Feat code : {{city.feat_code}}
+                    br
+                    span(ng-show='city.cc2') cc2 : {{city.cc2}}
+            tr
+                th Administrators
+                td 
+                        span(ng-show='city.admin1') admin 1 : {{city.admin1}}
+                        br
+                        span(ng-show='city.admin2') admin 2 : {{city.admin2}}
+                        br
+                        span(ng-show='city.admin3') admin 3 : {{city.admin3}}
+                        br
+                        span(ng-show='city.admin4') admin 4 : {{city.admin4}}
+   
+    
+    .col-sm-12.col-md-5.map
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" dragging="map.dragging" draggable="false" control="map.control" options="options"><ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id"></ui-gmap-marker></ui-gmap-google-map>

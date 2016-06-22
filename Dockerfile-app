@@ -1,0 +1,26 @@
+# This image will be based on the official nodejs docker image
+FROM node:latest
+#RUN npm install -g npm 
+RUN npm install -g bower
+RUN npm install -g gulp 
+
+# Commands will run in this directory
+RUN mkdir -p /var/node_apps/code_challenge
+RUN chmod -R 777 /var/node_apps/code_challenge/
+WORKDIR /usr/var/node_apps/code_challenge
+
+# Add all our code inside that directory that lives in the container
+ADD . /usr/var/node_apps/code_challenge/
+
+
+# Install dependencies and generate production dist
+RUN npm install
+RUN bower install --config.interactive=false --allow-root
+#RUN gulp dist
+
+
+# Tell Docker we are going to use this port
+EXPOSE 8080
+ 
+# The command to run our app when the container is run
+CMD ["npm", "start"]

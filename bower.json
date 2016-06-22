@@ -1,0 +1,21 @@
+{
+    "name": "code-challenge",
+    "version": "1.0.0",
+    "main": "public/stylesheets/style.css",
+    "ignore": [
+        ".jshintrc",
+        "**/*.txt"
+    ],
+    "dependencies": {
+        "jquery": "latest",
+        "angular": "latest",
+        "angular-route": "latest",
+        "bootstrap": "latest",
+        "angular-bootstrap": "latest",
+        "angular-animate": "latest",
+        "html5-boilerplate": "latest",
+        "angular-google-maps": "latest"
+    },
+    "devDependencies": {
+    }
+}

@@ -1,0 +1,55 @@
+h2.sub-header {{city.name}}
+table.table.table-striped
+    tr(ng-show='city.ascii')
+        th
+            span ASCII name
+        td
+            {{city.ascii}}
+    tr(ng-show='city.alt_name')
+        th
+            span Alternative names
+        td
+            //TODO Modifier le stockage des noms dans la base de donnée
+            {{city.alt_name.split(',').join(', ')}}
+    tr
+        th GPS location
+        td 
+            span long: {{city.long}}
+            br
+            span lat : {{city.lat}}
+    tr(ng-show='city.population')
+        th Population
+        td {{city.population}}
+    tr(ng-show='city.elevation')
+        th Elevation
+        td {{city.elevation}}
+    tr(ng-show='city.dem')
+        th Demography
+        td {{city.dem}}
+    tr(ng-show='city.tz')
+        th Timezone
+        td {{city.tz}}
+    tr
+        th Others informations
+        td 
+            span(ng-show='city.feat_class') Feat classs : {{city.feat_class}}
+            br
+            span(ng-show='city.feat_code') Feat code : {{city.feat_code}}
+            br
+            span(ng-show='city.cc2') cc2 : {{city.cc2}}
+    tr
+        th Administrators
+        td 
+                span(ng-show='city.admin1') admin 1 : {{city.admin1}}
+                br
+                span(ng-show='city.admin2') admin 2 : {{city.admin2}}
+                br
+                span(ng-show='city.admin3') admin 3 : {{city.admin3}}
+                br
+                span(ng-show='city.admin4') admin 4 : {{city.admin4}}
+
+p
+  | Are you sure you want to delete this post? 
+  button(ng-click='deletePost()') Yes
+  |  - 
+  button(ng-click='home()') No thanks

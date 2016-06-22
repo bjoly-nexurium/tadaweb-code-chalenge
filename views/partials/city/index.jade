@@ -1,0 +1,37 @@
+include ../../bootstrap_components
+
+script(src='../javascripts/controllers.js')
+
+div(ng-controller="IndexCtrl")
+h2.sub-header There are {{totalCities}} cities in the database
+.table-responsive
+    div(ng-controller="SearchCtrl")
+        <input type="text" ng-model="citySelected"   placeholder="Search a city"  typeahead-on-select="onSelect($item, $model, $label)" uib-typeahead="item as item.name for item in getLocation($viewValue)" typeahead-loading="loadingCities" typeahead-no-results="noResults" class="form-control" />
+        span.loadingCities(ng-show="loadingCities") <i  class="glyphicon glyphicon-refresh"></i> Loading in progress
+        div.noResults(ng-show="noResults")
+            span <i class="glyphicon glyphicon-remove"></i> No Results Found
+    table.table.table-striped
+        thead
+            tr
+                th Name
+                th Country
+                th Population
+                th Digital Elevation Model
+                th Timezone
+                th Actions
+        tbody
+            mixin city(city)
+                td {{city.name}}
+                td {{city.country}}
+                td {{city.population}}
+                td {{city.dem}}
+                td {{city.tz}}
+            tr(ng-repeat='city in data')
+                +city(city)
+                td 
+                    a(href='#!/readCity/{{city._id}}') Read More - 
+                    a(href='#!/deleteCity/{{city._id}}') Delete
+
+    div View <select ng-init="viewby " ng-model="viewby" ng-change="setItemsPerPage(viewby)"><option value="3">3</option><option value="5">5</option><option value="10">10</option><option  value="20">20</option><option  value="30">30</option><option value="40">40</option><option value="50">50</option></select> records at a time.
+    <uib-pagination total-items="totalCities" ng-model="currentPage" max-size="maxSize" ng-change="pageChanged()" class="pagination-sm" boundary-links="false" rotate="true"  items-per-page="itemsPerPage"></uib-pagination>
+

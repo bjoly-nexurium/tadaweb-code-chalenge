@@ -1,0 +1,28 @@
+#Container 
+db:
+    image: mongo
+    command: --smallfiles
+    volumes:
+    - ./data/db:/data/db
+    ports:
+        - "27017"
+    restart: always
+#container use to seed the db from the tsv file at every launch
+# Can be commented if uneeded
+mongodata:  
+  build: ./
+  dockerfile: Dockerfile-mongo
+  links:
+      - db
+#main container with the backend  
+app:
+    build: ./
+    dockerfile: Dockerfile-app
+    volumes: 
+        - .:/usr/src/app
+    ports:
+        - "12040:3000"
+    environment: 
+        NODE_ENV: development
+    links:
+        - db
