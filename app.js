@@ -24,7 +24,6 @@ app.use(logger('dev'));
 
 
 // connect to the db
-//var MONGO_DB = 'mongodb://localhost:27017/codechallenge';
 var MONGO_DB;
 var FIG_DB = process.env.DB_1_PORT;
 if (FIG_DB) {
