@@ -3,8 +3,7 @@ table.table.table-striped
     tr(ng-show='city.ascii')
         th
             span ASCII name
-        td
-            {{city.ascii}}
+        td  {{city.ascii}}
     tr(ng-show='city.alt_name')
         th
             span Alternative names
@@ -24,7 +23,7 @@ table.table.table-striped
         th Elevation
         td {{city.elevation}}
     tr(ng-show='city.dem')
-        th Demography
+        th Digital Elevation Model
         td {{city.dem}}
     tr(ng-show='city.tz')
         th Timezone
@@ -50,6 +49,6 @@ table.table.table-striped
 
 p
   | Are you sure you want to delete this post? 
-  button(ng-click='deletePost()') Yes
+  button(ng-click='deleteCity()') Yes
   |  - 
   button(ng-click='home()') No thanks
