@@ -86,7 +86,7 @@ angular.module('codeChallenge.controllers', ['uiGmapgoogle-maps', 'ui.bootstrap'
         .controller('DeleteCityCtrl', function ($scope, $http, $location, $routeParams) {
             $http.get('/api/cities/' + $routeParams.id).
                     success(function (data) {
-                        $scope.city = data.city;
+                        $scope.city = data;
                     });
 
             $scope.deleteCity = function () {
