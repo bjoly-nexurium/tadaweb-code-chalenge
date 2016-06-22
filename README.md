@@ -30,7 +30,7 @@ npm test
 To start a local server run. Think to start and populated your mongodb collection ( or run the db container ) 
 
 ```
-MONGO_DB="localhost:27018/codechallenge" npm start
+MONGO_URL="localhost:27018/codechallenge" npm start
 ```
 
 which should produce output similar to
